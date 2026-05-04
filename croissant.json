@@ -1,0 +1,114 @@
+{
+  "@context": {
+    "@language": "en",
+    "@vocab": "https://schema.org/",
+    "citeAs": "cr:citeAs",
+    "column": "cr:column",
+    "conformsTo": "dct:conformsTo",
+    "cr": "http://mlcommons.org/croissant/",
+    "rai": "http://mlcommons.org/croissant/RAI/",
+    "data": {"@id": "cr:data", "@type": "@json"},
+    "dataType": {"@id": "cr:dataType", "@type": "@vocab"},
+    "dct": "http://purl.org/dc/terms/",
+    "examples": {"@id": "cr:examples", "@type": "@json"},
+    "extract": "cr:extract",
+    "field": "cr:field",
+    "fileProperty": "cr:fileProperty",
+    "fileObject": "cr:fileObject",
+    "fileSet": "cr:fileSet",
+    "format": "cr:format",
+    "includes": "cr:includes",
+    "isLiveDataset": "cr:isLiveDataset",
+    "jsonPath": "cr:jsonPath",
+    "key": "cr:key",
+    "md5": "cr:md5",
+    "parentField": "cr:parentField",
+    "path": "cr:path",
+    "recordSet": "cr:recordSet",
+    "references": "cr:references",
+    "regex": "cr:regex",
+    "repeated": "cr:repeated",
+    "replace": "cr:replace",
+    "sc": "https://schema.org/",
+    "separator": "cr:separator",
+    "source": "cr:source",
+    "subField": "cr:subField",
+    "transform": "cr:transform"
+  },
+  "@type": "sc:Dataset",
+  "name": "SkillCraft",
+  "description": "SkillCraft is a benchmark of 126 tool-use tasks across 21 task families and 6 application domains (Entertainment & Gaming, Reference & Knowledge, Education & Society, Developer & Web, Science & Environment, Food & Lifestyle), designed to evaluate whether tool-using LLM agents can compose, cache, and reuse atomic tools as higher-level Skills. Each task scales along two dimensions: number of target items (3/4/5) and tool-call complexity per item (3/4/5), producing Easy/Medium/Hard difficulty levels.",
+  "conformsTo": "http://mlcommons.org/croissant/1.0",
+  "license": "https://creativecommons.org/licenses/by/4.0/",
+  "url": "REPLACE_WITH_ANONYMOUS_REPO_URL",
+  "version": "1.0.0",
+  "datePublished": "2026-05-06",
+  "creator": {
+    "@type": "sc:Organization",
+    "name": "Anonymous Authors"
+  },
+  "citeAs": "@inproceedings{skillcraft2026, title={SkillCraft: Can LLM Agents Learn to Use Tools Skillfully?}, booktitle={NeurIPS 2026 Evaluations and Datasets Track}, year={2026}}",
+  "keywords": [
+    "LLM agents",
+    "tool use",
+    "benchmark",
+    "skill learning",
+    "MCP",
+    "compositional generalization",
+    "agentic AI"
+  ],
+
+  "rai:dataCollection": "Tasks were authored by the authors based on publicly available REST APIs (e.g., GitLab, Open-Meteo, TVMaze, TheCocktailDB, RAWG). For each task family, 5-7 tool functions wrapping distinct API endpoints were implemented. The 21 seed task families were sourced from: (i) 5 adapted from existing tool-use benchmarks (Toolathlon, WebArena, TextArena, M3Eval), (ii) 12 hand-crafted around curated public web APIs, and (iii) 4 hand-crafted around local data processing.",
+  "rai:dataCollectionType": "Manually curated by the authors based on public APIs.",
+  "rai:dataPreprocessingProtocol": "Tasks were systematically scaled by varying the number of target items (N = 3, 4, 5) and the tool-call complexity per item (M = 3, 4, 5), producing 6 difficulty levels (Easy: e1-e3, Medium: m1-m2, Hard: h1) totaling 126 tasks.",
+  "rai:dataAnnotationProtocol": "Each task includes a partial-credit scoring rubric defining: output file existence (10 pts), JSON validity (10 pts), data completeness (30 pts), field-level accuracy (50 pts). A task is considered successful if it achieves >=90% of the maximum score.",
+  "rai:dataAnnotationPlatform": "Authors-defined evaluation harness (open-source, included in the repository).",
+  "rai:dataAnnotationAnalysis": "Per-task scoring is deterministic; cross-model success rates are reported in the paper.",
+  "rai:dataReleaseMaintenancePlan": "The authors will host the benchmark on a public repository post-acceptance and will accept pull requests for additional task families. Existing task definitions and evaluation criteria will not be silently modified post-release; any changes will be released as a new version with changelog.",
+  "rai:dataUseCases": "Evaluating LLM agents' ability to compose, cache, and reuse atomic tools as higher-level Skills; comparing token-efficiency of skill-based vs. baseline tool use; studying cross-task and cross-model skill transfer; auditing failure modes of hierarchical skill composition.",
+  "rai:dataLimitations": "(1) The benchmark is restricted to API-style tool use; GUI / browser-style agent interaction is out of scope. (2) Single-run, deterministic evaluation (temperature=0); robustness under stochastic decoding is not measured. (3) Closed-source provider APIs may be deprecated, silently versioned, or rate-limited over time. (4) Hierarchical Mode is evaluated only at max nesting depth = 10. (5) Per-task runtime bounded (150 turns / 60 minutes / 1M input tokens). (6) Tasks are English-only and skewed toward Western-centric public APIs; multilingual or region-specific API ecosystems are not represented. (7) Skills are code-based (Python scripts); other compositional substrates are not evaluated. See Appendix F of the paper for full discussion.",
+  "rai:dataBiases": "Task selection skews toward Western-centric, English-language API ecosystems (e.g., cocktails, recipes, anime, Western movie/TV databases). Models may show better performance on tasks aligned with their training distribution; cross-cultural / multilingual generality is not measured.",
+  "rai:dataSocialImpact": "Positive: enables more rigorous, comparable evaluation of tool-using agents, encouraging more efficient and reliable agentic systems. Potential negative: better evaluation lowers iteration cost for autonomous agents capable of automating low-cost online actions at scale, which is dual-use. Mitigations: tasks use only public APIs within their advertised terms of service; no harmful behavior is rewarded by the scoring criteria; no new pretrained models or scraped private datasets are released. See Appendix G of the paper for full discussion.",
+  "rai:dataSensitiveInformation": "No personally identifiable information (PII), private content, or sensitive data is included. All task content originates from public REST APIs whose terms of service permit research use.",
+  "rai:personalSensitiveInformation": "None.",
+
+  "distribution": [
+    {
+      "@type": "cr:FileObject",
+      "@id": "skillcraft-repository",
+      "name": "skillcraft-repository",
+      "description": "Anonymized repository containing all task definitions, MCP tool wrappers, the Coding Verifier, and the evaluation harness.",
+      "contentUrl": "REPLACE_WITH_ANONYMOUS_REPO_URL",
+      "encodingFormat": "git+https",
+      "sha256": "main"
+    },
+    {
+      "@type": "cr:FileSet",
+      "@id": "task-definitions",
+      "name": "task-definitions",
+      "description": "126 task definitions across 21 task families and 6 application domains, organized by difficulty (easy / medium / hard).",
+      "containedIn": {"@id": "skillcraft-repository"},
+      "encodingFormat": "text/x-python",
+      "includes": "tasks/**/*.py"
+    }
+  ],
+
+  "recordSet": [
+    {
+      "@type": "cr:RecordSet",
+      "@id": "tasks",
+      "name": "tasks",
+      "description": "Each record represents one of the 126 SkillCraft tasks. The recordSet is described at the schema level only; concrete task content lives in the source files referenced by the FileSet above.",
+      "field": [
+        {"@type": "cr:Field", "@id": "tasks/task_id",     "name": "task_id",     "description": "Unique identifier (e.g., cocktail-menu-generator/h1).",                                          "dataType": "sc:Text"},
+        {"@type": "cr:Field", "@id": "tasks/task_family", "name": "task_family", "description": "One of 21 task families (e.g., cocktail-menu-generator).",                                      "dataType": "sc:Text"},
+        {"@type": "cr:Field", "@id": "tasks/domain",      "name": "domain",      "description": "Application domain (Entertainment, Reference, Education, Developer, Science, Food).",          "dataType": "sc:Text"},
+        {"@type": "cr:Field", "@id": "tasks/difficulty",  "name": "difficulty",  "description": "Easy (e1-e3), Medium (m1-m2), or Hard (h1).",                                                   "dataType": "sc:Text"},
+        {"@type": "cr:Field", "@id": "tasks/N",           "name": "N",           "description": "Number of target items (3, 4, or 5).",                                                          "dataType": "sc:Integer"},
+        {"@type": "cr:Field", "@id": "tasks/M",           "name": "M",           "description": "Number of API calls per item (3, 4, or 5).",                                                    "dataType": "sc:Integer"},
+        {"@type": "cr:Field", "@id": "tasks/api_sources", "name": "api_sources", "description": "List of REST APIs the task depends on.",                                                       "dataType": "sc:Text", "repeated": true},
+        {"@type": "cr:Field", "@id": "tasks/scoring",     "name": "scoring",     "description": "Partial-credit rubric (output file existence, JSON validity, data completeness, field accuracy).", "dataType": "sc:Text"}
+      ]
+    }
+  ]
+}
