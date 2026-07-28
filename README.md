@@ -71,7 +71,60 @@ SKILLCRAFT_MODEL=deepseek-v3.2-exp
 SKILLCRAFT_PROVIDER=openrouter
 ```
 
-### 4. Running the Pipeline
+### 4. Adding a New Model
+
+Adding a model does not require changes to the tasks or evaluators. The model must support OpenAI-compatible chat completions and function/tool calling.
+
+#### A. Hosted or Custom API
+
+For any OpenAI-compatible endpoint, use the `unified` provider. Set the endpoint and API key in `.env`:
+
+```bash
+SKILLCRAFT_OPENAI_BASE_URL=https://your-endpoint.example/v1
+SKILLCRAFT_OPENAI_API_KEY=YOUR_API_KEY
+SKILLCRAFT_MODEL=your-model-id
+SKILLCRAFT_PROVIDER=unified
+```
+
+Then pass the model identifier exposed by the endpoint:
+
+```bash
+bash run.sh scaled_tasks/cat-facts-collector/e1 base \
+  --model your-model-id \
+  --provider unified
+```
+
+The `unified` provider forwards the model name directly, so no model mapping is required.
+
+#### B. Local Inference
+
+Serve the checkpoint through an OpenAI-compatible engine such as vLLM or SGLang, with tool calling enabled. It can be connected through the `unified` provider above, or through the included `local_vllm` provider:
+
+```bash
+export VLLM_BASE_URL=http://localhost:8000/v1
+
+bash run.sh scaled_tasks/cat-facts-collector/e1 base \
+  --model your-served-model-name \
+  --provider local_vllm
+```
+
+`VLLM_BASE_URL` defaults to `http://localhost:8000/v1`. The served model name is forwarded unchanged and does not require an entry in `API_MAPPINGS`.
+
+#### C. Non-OpenAI-Compatible Backend
+
+Implement a `ModelProvider` adapter in `utils/api_model/model_provider.py`, register it in `model_provider_mapping`, and add the model's provider-specific name and metadata to `API_MAPPINGS`. The task suite and evaluation pipeline remain unchanged.
+
+After validating a single task, run the same full Base and Skill evaluation:
+
+```bash
+uv run python test_all_tasks.py \
+  --scaled-tasks \
+  --mode base,skill \
+  --model your-model-id \
+  --provider unified
+```
+
+### 5. Running the Pipeline
 
 #### A. Single task
 
