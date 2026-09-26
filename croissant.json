@@ -40,14 +40,14 @@
   "description": "SkillCraft is a benchmark of 126 tool-use tasks across 21 task families and 6 application domains (Entertainment & Gaming, Reference & Knowledge, Education & Society, Developer & Web, Science & Environment, Food & Lifestyle), designed to evaluate whether tool-using LLM agents can compose, cache, and reuse atomic tools as higher-level Skills. Each task scales along two dimensions: number of target items (3/4/5) and tool-call complexity per item (3/4/5), producing Easy/Medium/Hard difficulty levels.",
   "conformsTo": "http://mlcommons.org/croissant/1.0",
   "license": "https://creativecommons.org/licenses/by/4.0/",
-  "url": "REPLACE_WITH_ANONYMOUS_REPO_URL",
+  "url": "https://anonymous.4open.science/r/skillcraft-anon-2026-F810/",
   "version": "1.0.0",
   "datePublished": "2026-05-06",
   "creator": {
     "@type": "sc:Organization",
     "name": "Anonymous Authors"
   },
-  "citeAs": "@inproceedings{skillcraft2026, title={SkillCraft: Can LLM Agents Learn to Use Tools Skillfully?}, booktitle={NeurIPS 2026 Evaluations and Datasets Track}, year={2026}}",
+  "citeAs": "@misc{skillcraft2026, title={SkillCraft: Can LLM Agents Learn to Use Tools Skillfully?}, year={2026}, note={Anonymous submission under review}}",
   "keywords": [
     "LLM agents",
     "tool use",
@@ -78,9 +78,8 @@
       "@id": "skillcraft-repository",
       "name": "skillcraft-repository",
       "description": "Anonymized repository containing all task definitions, MCP tool wrappers, the Coding Verifier, and the evaluation harness.",
-      "contentUrl": "REPLACE_WITH_ANONYMOUS_REPO_URL",
-      "encodingFormat": "git+https",
-      "sha256": "main"
+      "contentUrl": "https://anonymous.4open.science/api/repo/skillcraft-anon-2026-F810/zip",
+      "encodingFormat": "application/zip"
     },
     {
       "@type": "cr:FileSet",

@@ -21,11 +21,10 @@ Under the following terms:
 The full legal text of the license is available at:
 https://creativecommons.org/licenses/by/4.0/legalcode
 
-When using this benchmark in academic work, please cite:
+When using this benchmark in academic work, please cite the associated manuscript:
 
-  @inproceedings{skillcraft2026,
-    title     = {SkillCraft: Can LLM Agents Learn to Use Tools Skillfully?},
-    booktitle = {NeurIPS 2026 Evaluations and Datasets Track},
-    year      = {2026},
-    note      = {Anonymous submission}
+  @misc{skillcraft2026,
+    title  = {SkillCraft: Can LLM Agents Learn to Use Tools Skillfully?},
+    year   = {2026},
+    note   = {Anonymous submission under review}
   }

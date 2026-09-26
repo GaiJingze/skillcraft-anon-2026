@@ -1,7 +1,7 @@
 # SkillCraft
 
-> **Anonymized submission** for the NeurIPS 2026 Evaluations & Datasets Track.
-> Author names, institutional affiliations, repository owners, and project websites have been redacted.
+> **Anonymous research code and benchmark artifacts** accompanying a manuscript under double-blind review.
+> Author names, institutional affiliations, repository owners, and project websites are omitted from this mirror.
 > Please do not attempt to de-anonymize this submission.
 
 ## Project Overview
